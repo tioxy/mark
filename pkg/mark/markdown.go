@@ -3,7 +3,6 @@ package mark
 import (
 	"bytes"
 	"regexp"
-	"strconv"
 	"strings"
 
 	"github.com/kovetskiy/mark/pkg/mark/stdlib"
@@ -58,13 +57,9 @@ func (renderer ConfluenceRenderer) BlockCode(
 		"ac:code",
 		struct {
 			Language string
-			Collapse string
-			Title    string
 			Text     string
 		}{
 			ParseLanguage(lang),
-			strconv.FormatBool(strings.Contains(lang, "collapse")),
-			ParseTitle(lang),
 			string(text),
 		},
 	)
